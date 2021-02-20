@@ -1,3 +1,6 @@
+sudo: required
+language: generic
+
 services:
   - docker
 
@@ -19,3 +22,15 @@ after_success:
   - docker push judrin/multi-nginx
   - docker push judrin/multi-server
   - docker push judrin/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-fib app"
+  env: "Dockerfibapp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-682967080831"
+  bucket_path: "docker-fib app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
