@@ -25,10 +25,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "docker-fib app"
-  env: "Dockerfibapp-env"
+  app: "Multi-container-application"
+  env: "Multicontainerapplication-env"
   bucket_name: "elasticbeanstalk-us-east-1-682967080831"
-  bucket_path: "docker-fib app"
+  bucket_path: "multi-app"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
